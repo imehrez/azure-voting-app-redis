@@ -11,13 +11,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'acr-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'acr-credentials', usernameVariable: 'ACR_ID', passwordVariable: 'ACR_PASSWORD')]) {
                     retry(3) {
                         sh './build.sh'
                     }
                 }
-
-                echo "GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}"
 
             }
         } 
