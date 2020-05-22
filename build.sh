@@ -4,7 +4,7 @@ echo building..
 
 # Add the commit ID and build number to the title of the UI
 text="GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
-sed -i "s/^TITLE.*/TITLE = ${text}/" ./azure-vote/azure-vote/config_file.cfg
+#sed -i "s/^TITLE.*/TITLE = ${text}/" ./azure-vote/azure-vote/config_file.cfg
  
 # Build new image and push to ACR.
 WEB_IMAGE_NAME="${ACR_LOGINSERVER}/azure-vote-front:kube${BUILD_NUMBER}"
