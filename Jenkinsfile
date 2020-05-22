@@ -3,7 +3,7 @@ pipeline {
     
 
     environment {
-        text="GIT_COMMIT: ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
+        text="THis is a title\nGIT_COMMIT: ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
     }
 
 
