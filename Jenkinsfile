@@ -1,19 +1,17 @@
 pipeline {
     agent any
     
-    /*
+
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+        text="GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
     }
-    */
+
 
     stages {
         stage('Build') {
             steps {
 
                 //Add the commit ID and build number to the title of the UI
-                text="GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
                 sh 'sed -i "s/^TITLE.*/TITLE = ${text}/" ./azure-vote/azure-vote/config_file.cfg'
  
                 withCredentials([usernamePassword(credentialsId: 'acr-credentials', usernameVariable: 'ACR_ID', passwordVariable: 'ACR_PASSWORD')]) {
