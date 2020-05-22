@@ -11,6 +11,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+
+                //Add the commit ID and build number to the title of the UI
+                text="GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}" 
+                sh sed -i "s/^TITLE.*/TITLE = ${text}/" ./azure-vote/azure-vote/config_file.cfg
+ 
                 withCredentials([usernamePassword(credentialsId: 'acr-credentials', usernameVariable: 'ACR_ID', passwordVariable: 'ACR_PASSWORD')]) {
                     retry(3) {
                         sh './build.sh'
