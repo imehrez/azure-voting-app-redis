@@ -16,7 +16,7 @@ pipeline {
                 echo "GIT_COMMIT is ${env.GIT_COMMIT} build ID: ${env.BUILD_ID}"
 
             }
-        }
+        } 
 
         stage('Test') {
             steps {
