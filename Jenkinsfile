@@ -64,9 +64,15 @@ pipeline {
         }
         failure {
             echo 'This will run only if failed'
+            slackSend channel: '#devops-testing',
+                  color: 'danger',
+                  message: "The pipeline ${currentBuild.fullDisplayName} FAILED!."
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
+            slackSend channel: '#devops-testing',
+                  color: 'warning',
+                  message: "The pipeline ${currentBuild.fullDisplayName} is unstable."
         }
         changed {
             echo 'This will run only if the state of the Pipeline has changed'
