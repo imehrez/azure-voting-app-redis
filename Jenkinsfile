@@ -64,7 +64,7 @@ pipeline {
                   message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         failure {
-            echo 'This will run only if failed '
+            echo 'This will run only if failed'
             slackSend channel: '#devops-testing',
                   color: 'danger',
                   message: "The pipeline ${currentBuild.fullDisplayName} FAILED!."
